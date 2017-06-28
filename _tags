@@ -1,0 +1,7 @@
+true: package(containers), package(containers.sexp)
+"src": include
+"src/enumerate": include
+"src/enumerate/structures": include
+"src/zipper": include
+"src/core": include
+"tests": include
