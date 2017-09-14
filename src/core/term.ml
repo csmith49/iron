@@ -5,12 +5,6 @@ type 'a t =
     | Leaf of 'a
     | Node of 'a * ('a t) list
 
-(* terms are instances of functors *)
-let rec fmap (f : 'a -> 'b) : 'a t -> 'b t = function
-    | Leaf x -> Leaf (f x)
-    | Node (x, xs) -> Node (f x, CCList.map (fmap f) xs)
-let (<$>) = fmap
-
 (* sometimes there will be some accessing needed *)
 let value : 'a t -> 'a = function
     | Leaf x -> x
@@ -20,6 +14,14 @@ let value : 'a t -> 'a = function
 let make (x : 'a) (xs : ('a t) list) : 'a t = match xs with
     | [] -> Leaf x
     | _ -> Node (x, xs)
+
+(* terms are instances of functors *)
+module Functor = struct
+  let rec fmap (f : 'a -> 'b) : 'a t -> 'b t = function
+    | Leaf x -> Leaf (f x)
+    | Node (x, xs) -> Node (f x, CCList.map (fmap f) xs)
+  let (<$>) = fmap
+end
 
 (* we will often want a very particular kind of constructor *)
 let rec string_term_of_sexp : CCSexp.t -> string t = function
@@ -52,5 +54,5 @@ end) -> struct
             |> CCResult.to_opt
             |> CCOpt.get_exn
             |> string_term_of_sexp
-            |> fmap A.of_string
+            |> Functor.fmap A.of_string
 end

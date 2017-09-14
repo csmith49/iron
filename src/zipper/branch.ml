@@ -11,7 +11,7 @@ let right : 'a t -> ('a Term.t) list = function (_, _, r) -> r
 let collapse (xt : 'a Term.t) (b : 'a t) : 'a Term.t =
     let x = value b in
     let xs = CCList.rev_append (left b) (xt :: (right b)) in
-        make x xs
+        Term.make x xs
 
 (* helpers for movement functions in Zipper *)
 let push_left (xt : 'a Term.t) (b : 'a t) : ('a Term.t * 'a t) option = match b with

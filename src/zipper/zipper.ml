@@ -1,6 +1,6 @@
 (* of course, maneuvering will fail often *)
 open CCOpt.Infix
-open CCFUn
+open CCFun
 
 (* so our zipper.t maintains current content and the rest of the term in branch form *)
 type 'a t = ('a Term.t) * ('a Branch.t) list
@@ -10,7 +10,7 @@ let of_term (xt : 'a Term.t) : 'a t = (xt, [])
 
 (* value-level getters and setters *)
 let get : 'a t -> 'a = function
-    (xt, _) -> value xt
+    (xt, _) -> Term.value xt
 let set (x : 'a) : 'a t -> 'a t =
     CCPair.map1 (fun lt ->
         match lt with
