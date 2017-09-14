@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: 94fe42b2e3ea04f73c622e6664f10caa)
+version = "0.1"
+description = "Scaffolding for term-based synthesis tools"
+requires = "containers iron"
+archive(byte) = "iron_zipper.cma"
+archive(byte, plugin) = "iron_zipper.cma"
+archive(native) = "iron_zipper.cmxa"
+archive(native, plugin) = "iron_zipper.cmxs"
+exists_if = "iron_zipper.cma"
+# OASIS_STOP
+

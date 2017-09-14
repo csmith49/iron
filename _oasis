@@ -1,0 +1,22 @@
+OASISFormat: 0.4
+Name:        Iron
+Version:     0.1
+Synopsis:    Scaffolding for term-based synthesis tools
+Authors:     Calvin Smith
+License:     MIT
+Plugins:     META (0.4), StdFiles (0.4), DevFiles (0.4)
+
+Library "iron"
+    Path: src/core
+    BuildTools: ocamlbuild
+    Modules: Term
+    BuildDepends: containers
+
+Library "iron_zipper"
+    Path: src/zipper
+    BuildTools: ocamlbuild
+    Modules: Zipper
+    BuildDepends: containers, iron
+    InternalModules: Branch
+    FindLibName: zipper
+    FindLibParent: iron

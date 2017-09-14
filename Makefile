@@ -1,18 +1,41 @@
-# build flags
-ocb_flags = -r -use-ocamlfind -pkgs "containers"
-ocb = ocamlbuild $(ocb_flags)
+# OASIS_START
+# DO NOT EDIT (digest: a3c674b4239234cbbe53afe090018954)
 
-# rules
-.phony: all
-all: cma
+SETUP = ocaml setup.ml
 
-test:
-	$(ocb) parsing_test.native
-	./parsing_test.native
+build: setup.data
+	$(SETUP) -build $(BUILDFLAGS)
 
-cma:
-	$(ocb) iron.cma
+doc: setup.data build
+	$(SETUP) -doc $(DOCFLAGS)
 
-.phony: clean
+test: setup.data build
+	$(SETUP) -test $(TESTFLAGS)
+
+all:
+	$(SETUP) -all $(ALLFLAGS)
+
+install: setup.data
+	$(SETUP) -install $(INSTALLFLAGS)
+
+uninstall: setup.data
+	$(SETUP) -uninstall $(UNINSTALLFLAGS)
+
+reinstall: setup.data
+	$(SETUP) -reinstall $(REINSTALLFLAGS)
+
 clean:
-	$(ocb) -clean
+	$(SETUP) -clean $(CLEANFLAGS)
+
+distclean:
+	$(SETUP) -distclean $(DISTCLEANFLAGS)
+
+setup.data:
+	$(SETUP) -configure $(CONFIGUREFLAGS)
+
+configure:
+	$(SETUP) -configure $(CONFIGUREFLAGS)
+
+.PHONY: build doc test all install uninstall reinstall clean distclean configure
+
+# OASIS_STOP

@@ -1,0 +1,8 @@
+(* OASIS_START *)
+(* DO NOT EDIT (digest: 450cf097fa9a6a06c5135bb613bcb157) *)
+
+Authors of Iron:
+
+* Calvin Smith
+
+(* OASIS_STOP *)

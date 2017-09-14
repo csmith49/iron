@@ -1,7 +1,24 @@
-true: package(containers), package(containers.sexp)
-"src": include
-"src/enumerate": include
-"src/enumerate/structures": include
-"src/zipper": include
-"src/core": include
-"tests": include
+# OASIS_START
+# DO NOT EDIT (digest: 9b34f0d256335e45e680ba7591e214ca)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library iron
+"src/core/iron.cmxs": use_iron
+<src/core/*.ml{,i,y}>: pkg_containers
+# Library iron_zipper
+"src/zipper/iron_zipper.cmxs": use_iron_zipper
+<src/zipper/*.ml{,i,y}>: pkg_containers
+<src/zipper/*.ml{,i,y}>: use_iron
+# OASIS_STOP

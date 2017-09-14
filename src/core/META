@@ -1,0 +1,22 @@
+# OASIS_START
+# DO NOT EDIT (digest: 5886849aac26cd784c08d1eff9e1f99d)
+version = "0.1"
+description = "Scaffolding for term-based synthesis tools"
+requires = "containers"
+archive(byte) = "iron.cma"
+archive(byte, plugin) = "iron.cma"
+archive(native) = "iron.cmxa"
+archive(native, plugin) = "iron.cmxs"
+exists_if = "iron.cma"
+package "zipper" (
+ version = "0.1"
+ description = "Scaffolding for term-based synthesis tools"
+ requires = "containers iron"
+ archive(byte) = "iron_zipper.cma"
+ archive(byte, plugin) = "iron_zipper.cma"
+ archive(native) = "iron_zipper.cmxa"
+ archive(native, plugin) = "iron_zipper.cmxs"
+ exists_if = "iron_zipper.cma"
+)
+# OASIS_STOP
+
